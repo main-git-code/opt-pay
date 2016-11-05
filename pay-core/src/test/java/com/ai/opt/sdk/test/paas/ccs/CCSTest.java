@@ -28,10 +28,10 @@ public class CCSTest {
         System.out.println("aaaaaa");
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void addServiceIdPwdMap() throws ConfigException {
-    	String cachesnsConfig = "{\"MCS001\":\"" + "123456"     
+    	String cachesnsConfig = "{\"MCS003\":\"" + "123456"     
     			+ "\",\"MCS002\":\"" + "123456"
     			+ "\",\"MDS001\":\"" + "123456"
     			+ "\",\"DSS001\":\"" + "123456"
@@ -46,18 +46,15 @@ public class CCSTest {
                     cachesnsConfig);
         }
     }
-    @Ignore
+    
+//    @Ignore
     @Test
     public void addMcsConfig() throws ConfigException {
         // 缓存服务主机
-        String mcs002 = "MCS002";
+        String mcs002 = "MCS003";
         // 缓存空间
-        String cachesnsConfig = "{\"com.ai.opt.test.mcs\":\"" + mcs002
-                + "\",\"com.ai.runner.center.common.cache.gncfgproperties\":\"" + mcs002
-                + "\",\"com.ai.runner.center.common.cache.gnservicerouteconfig\":\"" + mcs002
-                + "\",\"com.ai.runner.center.common.cache.gndepart\":\"" + mcs002
-                + "\",\"com.ai.runner.center.common.cache.gnsubject\":\"" + mcs002
-                + "\",\"com.ai.runner.center.cache.test\":\"" + mcs002 + "\"}";
+        String cachesnsConfig = "{\"com.ai.runner.center.pay.cache.paytenantinfo\":\"" + mcs002
+                + "\",\"com.ai.runner.center.pay.cache.payterminalorgrel\":\"" + mcs002 + "\"}";
         
         
 
@@ -70,7 +67,7 @@ public class CCSTest {
                     cachesnsConfig);
         }
     }
-    @Ignore
+//    @Ignore
     @Test
     public void readMcsConfig() throws ConfigException {
     	
@@ -165,19 +162,19 @@ public class CCSTest {
      * DB配置
      * @throws ConfigException 
      */
-    @Ignore
+//    @Ignore
      @Test
     public void addDbConfInfo() throws ConfigException {
         System.out.println("DBConf config ... start");
         StringBuilder sb = new StringBuilder();
 
         sb.append("{																																																				");
-        sb.append("		\"opt-uac-db\":                                                                                   ");
+        sb.append("		\"slp-pay-db\":                                                                                   ");
         sb.append("		{                                                                                                     ");
         sb.append("			\"driverClassName\":\"com.mysql.jdbc.Driver\",                                                          ");
-        sb.append("			\"jdbcUrl\":\"jdbc:mysql://10.1.228.222:39306/devbisdb1?useUnicode=true&characterEncoding=UTF-8\",   ");
-        sb.append("			\"username\":\"devbisusr1\",                                                                         ");
-        sb.append("			\"password\":\"devbisusr1\",                                                                         ");
+        sb.append("			\"jdbcUrl\":\"jdbc:mysql://10.1.245.7:31306/devslppaydb1?useUnicode=true&characterEncoding=UTF-8\",   ");
+        sb.append("			\"username\":\"devslppayusr1\",                                                                         ");
+        sb.append("			\"password\":\"devslppay@8899\",                                                                         ");
         sb.append("			\"autoCommit\":\"true\",                                                                                ");
         sb.append("			\"connectionTimeout\":\"30000\",                                                                        ");
         sb.append("			\"idleTimeout\":\"600000\",                                                                             ");

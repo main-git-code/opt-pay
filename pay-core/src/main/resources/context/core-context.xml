@@ -24,7 +24,7 @@
     
 	<!-- 配置数据源 -->
 	<bean id="dataSource" class="com.ai.opt.sdk.datasource.OptHikariDataSource">
-		 <constructor-arg name="dataSourceName" value="slp-pay-db"/>
+		 <constructor-arg name="dataSourceName" value="opt-pay-db"/>
 	</bean>
 
 	<bean id="seqDataSourceLoader"

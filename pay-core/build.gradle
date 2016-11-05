@@ -6,7 +6,9 @@ dependencies {
     compile 'mysql:mysql-connector-java:5.1.36'
     compile 'org.springframework:spring-tx:4.1.7.RELEASE'
     compile 'org.springframework:spring-jdbc:4.1.7.RELEASE'	
-	compile 'com.ai.opt.sdk:opt-sdk:2.0-SNAPSHOT'
+	compile ('com.ai.opt.sdk:opt-sdk:2.0-SNAPSHOT') {
+		exclude group: 'org.dom4j', module: 'dom4j'
+	}
     
     testCompile(
             "org.springframework:spring-test:4.1.7.RELEASE",

@@ -28,7 +28,7 @@
 	<dubbo:provider filter="DubboRequestTrackFilter"
 		timeout="${dubbo.provider.timeout}" retries="0" threads="300" />
 
-	<dubbo:monitor protocol="registry" />
+	<dubbo:monitor protocol="false" />
 
 	<dubbo:annotation package="com.ai.runner.center.pay.api" />
 

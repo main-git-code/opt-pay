@@ -12,6 +12,7 @@
     <result column="request_source" property="requestSource" jdbcType="VARCHAR" />
     <result column="pay_request_type" property="payRequestType" jdbcType="INTEGER" />
     <result column="pay_amount" property="payAmount" jdbcType="BIGINT" />
+    <result column="CURRENCY_UNIT" property="currencyUnit" jdbcType="VARCHAR" />
     <result column="pay_org_id" property="payOrgId" jdbcType="VARCHAR" />
     <result column="pay_org_serial" property="payOrgSerial" jdbcType="VARCHAR" />
     <result column="notify_url" property="notifyUrl" jdbcType="VARCHAR" />
@@ -88,16 +89,16 @@
   </sql>
   <sql id="Base_Column_List" >
     pay_id, tenant_id, order_id, batch_no, ori_order_id, trade_order_id, subject, request_source, 
-    pay_request_type, pay_amount, pay_org_id, pay_org_serial, notify_url, return_url, 
-    merchant_url, notify_id, create_time, status, status_chg_time, check_status, check_time, 
-    detail_data, reserved1, reserved2, reserved3
+    pay_request_type, pay_amount, CURRENCY_UNIT, pay_org_id, pay_org_serial, notify_url, 
+    return_url, merchant_url, notify_id, create_time, status, status_chg_time, check_status, 
+    check_time, detail_data, reserved1, reserved2, reserved3
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ai.runner.center.pay.dao.mapper.bo.PayCenterLogCriteria" >
     select
     <if test="distinct" >
       distinct
     </if>
-    'true' as QUERYID,
+    'false' as QUERYID,
     <include refid="Base_Column_List" />
     from pay_center_log
     <if test="_parameter != null" >
@@ -130,21 +131,21 @@
     insert into pay_center_log (pay_id, tenant_id, order_id, 
       batch_no, ori_order_id, trade_order_id, 
       subject, request_source, pay_request_type, 
-      pay_amount, pay_org_id, pay_org_serial, 
-      notify_url, return_url, merchant_url, 
-      notify_id, create_time, status, 
-      status_chg_time, check_status, check_time, 
-      detail_data, reserved1, reserved2, 
-      reserved3)
+      pay_amount, CURRENCY_UNIT, pay_org_id, 
+      pay_org_serial, notify_url, return_url, 
+      merchant_url, notify_id, create_time, 
+      status, status_chg_time, check_status, 
+      check_time, detail_data, reserved1, 
+      reserved2, reserved3)
     values (#{payId,jdbcType=BIGINT}, #{tenantId,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
       #{batchNo,jdbcType=VARCHAR}, #{oriOrderId,jdbcType=VARCHAR}, #{tradeOrderId,jdbcType=VARCHAR}, 
       #{subject,jdbcType=VARCHAR}, #{requestSource,jdbcType=VARCHAR}, #{payRequestType,jdbcType=INTEGER}, 
-      #{payAmount,jdbcType=BIGINT}, #{payOrgId,jdbcType=VARCHAR}, #{payOrgSerial,jdbcType=VARCHAR}, 
-      #{notifyUrl,jdbcType=VARCHAR}, #{returnUrl,jdbcType=VARCHAR}, #{merchantUrl,jdbcType=VARCHAR}, 
-      #{notifyId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}, 
-      #{statusChgTime,jdbcType=TIMESTAMP}, #{checkStatus,jdbcType=INTEGER}, #{checkTime,jdbcType=TIMESTAMP}, 
-      #{detailData,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, 
-      #{reserved3,jdbcType=VARCHAR})
+      #{payAmount,jdbcType=BIGINT}, #{currencyUnit,jdbcType=VARCHAR}, #{payOrgId,jdbcType=VARCHAR}, 
+      #{payOrgSerial,jdbcType=VARCHAR}, #{notifyUrl,jdbcType=VARCHAR}, #{returnUrl,jdbcType=VARCHAR}, 
+      #{merchantUrl,jdbcType=VARCHAR}, #{notifyId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{status,jdbcType=INTEGER}, #{statusChgTime,jdbcType=TIMESTAMP}, #{checkStatus,jdbcType=INTEGER}, 
+      #{checkTime,jdbcType=TIMESTAMP}, #{detailData,jdbcType=VARCHAR}, #{reserved1,jdbcType=VARCHAR}, 
+      #{reserved2,jdbcType=VARCHAR}, #{reserved3,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.ai.runner.center.pay.dao.mapper.bo.PayCenterLog" >
     insert into pay_center_log
@@ -178,6 +179,9 @@
       </if>
       <if test="payAmount != null" >
         pay_amount,
+      </if>
+      <if test="currencyUnit != null" >
+        CURRENCY_UNIT,
       </if>
       <if test="payOrgId != null" >
         pay_org_id,
@@ -255,6 +259,9 @@
       </if>
       <if test="payAmount != null" >
         #{payAmount,jdbcType=BIGINT},
+      </if>
+      <if test="currencyUnit != null" >
+        #{currencyUnit,jdbcType=VARCHAR},
       </if>
       <if test="payOrgId != null" >
         #{payOrgId,jdbcType=VARCHAR},
@@ -342,6 +349,9 @@
       <if test="record.payAmount != null" >
         pay_amount = #{record.payAmount,jdbcType=BIGINT},
       </if>
+      <if test="record.currencyUnit != null" >
+        CURRENCY_UNIT = #{record.currencyUnit,jdbcType=VARCHAR},
+      </if>
       <if test="record.payOrgId != null" >
         pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
       </if>
@@ -404,6 +414,7 @@
       request_source = #{record.requestSource,jdbcType=VARCHAR},
       pay_request_type = #{record.payRequestType,jdbcType=INTEGER},
       pay_amount = #{record.payAmount,jdbcType=BIGINT},
+      CURRENCY_UNIT = #{record.currencyUnit,jdbcType=VARCHAR},
       pay_org_id = #{record.payOrgId,jdbcType=VARCHAR},
       pay_org_serial = #{record.payOrgSerial,jdbcType=VARCHAR},
       notify_url = #{record.notifyUrl,jdbcType=VARCHAR},
@@ -452,6 +463,9 @@
       </if>
       <if test="payAmount != null" >
         pay_amount = #{payAmount,jdbcType=BIGINT},
+      </if>
+      <if test="currencyUnit != null" >
+        CURRENCY_UNIT = #{currencyUnit,jdbcType=VARCHAR},
       </if>
       <if test="payOrgId != null" >
         pay_org_id = #{payOrgId,jdbcType=VARCHAR},
@@ -512,6 +526,7 @@
       request_source = #{requestSource,jdbcType=VARCHAR},
       pay_request_type = #{payRequestType,jdbcType=INTEGER},
       pay_amount = #{payAmount,jdbcType=BIGINT},
+      CURRENCY_UNIT = #{currencyUnit,jdbcType=VARCHAR},
       pay_org_id = #{payOrgId,jdbcType=VARCHAR},
       pay_org_serial = #{payOrgSerial,jdbcType=VARCHAR},
       notify_url = #{notifyUrl,jdbcType=VARCHAR},

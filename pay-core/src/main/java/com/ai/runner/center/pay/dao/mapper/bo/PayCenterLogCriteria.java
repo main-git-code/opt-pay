@@ -795,6 +795,76 @@ public class PayCenterLogCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andCurrencyUnitIsNull() {
+            addCriterion("CURRENCY_UNIT is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitIsNotNull() {
+            addCriterion("CURRENCY_UNIT is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitEqualTo(String value) {
+            addCriterion("CURRENCY_UNIT =", value, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitNotEqualTo(String value) {
+            addCriterion("CURRENCY_UNIT <>", value, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitGreaterThan(String value) {
+            addCriterion("CURRENCY_UNIT >", value, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitGreaterThanOrEqualTo(String value) {
+            addCriterion("CURRENCY_UNIT >=", value, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitLessThan(String value) {
+            addCriterion("CURRENCY_UNIT <", value, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitLessThanOrEqualTo(String value) {
+            addCriterion("CURRENCY_UNIT <=", value, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitLike(String value) {
+            addCriterion("CURRENCY_UNIT like", value, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitNotLike(String value) {
+            addCriterion("CURRENCY_UNIT not like", value, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitIn(List<String> values) {
+            addCriterion("CURRENCY_UNIT in", values, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitNotIn(List<String> values) {
+            addCriterion("CURRENCY_UNIT not in", values, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitBetween(String value1, String value2) {
+            addCriterion("CURRENCY_UNIT between", value1, value2, "currencyUnit");
+            return (Criteria) this;
+        }
+
+        public Criteria andCurrencyUnitNotBetween(String value1, String value2) {
+            addCriterion("CURRENCY_UNIT not between", value1, value2, "currencyUnit");
+            return (Criteria) this;
+        }
+
         public Criteria andPayOrgIdIsNull() {
             addCriterion("pay_org_id is null");
             return (Criteria) this;

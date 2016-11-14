@@ -62,6 +62,11 @@ public class TradeReq extends BaseInfo {
     private Long payAmount;
 
     /**
+     * 币种,1、RMB；2、$;
+     */
+    private String currencyUnit;
+    
+    /**
      * 支付机构编码
      */
     private String payOrgId;
@@ -242,4 +247,12 @@ public class TradeReq extends BaseInfo {
     public void setReserved3(String reserved3) {
         this.reserved3 = reserved3;
     }
+
+	public String getCurrencyUnit() {
+		return currencyUnit;
+	}
+
+	public void setCurrencyUnit(String currencyUnit) {
+		this.currencyUnit = currencyUnit;
+	}
 }

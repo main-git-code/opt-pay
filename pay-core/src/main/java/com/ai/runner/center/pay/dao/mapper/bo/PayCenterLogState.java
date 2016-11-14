@@ -23,6 +23,8 @@ public class PayCenterLogState {
 
     private Long payAmount;
 
+    private String currencyUnit;
+
     private String payOrgId;
 
     private String payOrgSerial;
@@ -143,6 +145,14 @@ public class PayCenterLogState {
 
     public void setPayAmount(Long payAmount) {
         this.payAmount = payAmount;
+    }
+
+    public String getCurrencyUnit() {
+        return currencyUnit;
+    }
+
+    public void setCurrencyUnit(String currencyUnit) {
+        this.currencyUnit = currencyUnit == null ? null : currencyUnit.trim();
     }
 
     public String getPayOrgId() {

@@ -61,6 +61,10 @@ public class PayCenterSVImpl implements IPayCenterSV {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "支付金额不能为零");
         }
         
+        if (StringUtil.isBlank(req.getCurrencyUnit())) {
+            throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "币种不能为空");
+        }
+        
         if (req.getPayRequestType() == null) {
             throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "支付请求类型不能为空");
         }

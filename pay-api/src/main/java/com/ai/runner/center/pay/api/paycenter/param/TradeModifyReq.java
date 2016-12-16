@@ -29,6 +29,10 @@ public class TradeModifyReq extends BaseInfo {
     private String tradeOrderId;
 
     /**
+     * 
+     */
+    private String subject;
+    /**
      * 终端来源:<br>
      * 1:web<br>
      * 2:wap<br>
@@ -36,7 +40,8 @@ public class TradeModifyReq extends BaseInfo {
      * 4:微信<br>
      */
     private String requestSource;
-
+    private Long payAmount;
+    private String currencyUnit;
     /**
      * 支付机构编码
      */
@@ -46,7 +51,9 @@ public class TradeModifyReq extends BaseInfo {
      * 第三方支付平台交易流水号
      */
     private String payOrgSerial;
-
+    private String notifyUrl;
+    private String returnUrl;
+    private String merchantUrl;
     /**
      * 通知ID
      */
@@ -209,6 +216,54 @@ public class TradeModifyReq extends BaseInfo {
 
     public void setReceiveDetailData(String receiveDetailData) {
         this.receiveDetailData = receiveDetailData;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public Long getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(Long payAmount) {
+        this.payAmount = payAmount;
+    }
+
+    public String getCurrencyUnit() {
+        return currencyUnit;
+    }
+
+    public void setCurrencyUnit(String currencyUnit) {
+        this.currencyUnit = currencyUnit;
+    }
+
+    public String getNotifyUrl() {
+        return notifyUrl;
+    }
+
+    public void setNotifyUrl(String notifyUrl) {
+        this.notifyUrl = notifyUrl;
+    }
+
+    public String getReturnUrl() {
+        return returnUrl;
+    }
+
+    public void setReturnUrl(String returnUrl) {
+        this.returnUrl = returnUrl;
+    }
+
+    public String getMerchantUrl() {
+        return merchantUrl;
+    }
+
+    public void setMerchantUrl(String merchantUrl) {
+        this.merchantUrl = merchantUrl;
     }
 
 }

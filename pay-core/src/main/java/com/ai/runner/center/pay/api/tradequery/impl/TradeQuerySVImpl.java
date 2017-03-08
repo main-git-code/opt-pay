@@ -34,7 +34,16 @@ public class TradeQuerySVImpl implements ITradeQuerySV {
     
     @Autowired
     private ITradeQueryCombSV tradeQueryCombSV;
-    
+
+    /**
+     * 按商户订单号查询单笔交易记录
+     * @param param 商户订单号，租户ID
+     * @return 交易记录
+     * @throws CallerException 可能抛出的异常信息
+     * @author fanpw
+     * @ApiDocMethod
+     * @ApiCode PAY_0005
+     */
     @Override
     public TradeRecord querySingleTradeRecordByMerchantOrderId(MerchantOrderIdParam param)
             throws CallerException {

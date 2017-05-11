@@ -2,15 +2,10 @@ package com.ai.runner.center.pay.dao.mapper.factory;
 
 import javax.annotation.PostConstruct;
 
+import com.ai.runner.center.pay.dao.mapper.interfaces.*;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.ai.runner.center.pay.dao.mapper.interfaces.PayCenterLogMapper;
-import com.ai.runner.center.pay.dao.mapper.interfaces.PayCenterLogStateMapper;
-import com.ai.runner.center.pay.dao.mapper.interfaces.PayTenantConfigMapper;
-import com.ai.runner.center.pay.dao.mapper.interfaces.PayTenantInfoMapper;
-import com.ai.runner.center.pay.dao.mapper.interfaces.PayTerminalOrgRelMapper;
 
 
 @Component
@@ -77,5 +72,15 @@ public class MapperFactory {
      */
     public static PayTenantConfigMapper getPayTenantConfigMapper() {
         return sqlSessionTemplate.getMapper(PayTenantConfigMapper.class);
+    }
+
+    /**
+     * 支付中心流水表
+     * @return
+     * @author lxk
+     * @ApiDocMethod
+     */
+    public static PayExceptionMapper getPayExceptionMapper() {
+        return sqlSessionTemplate.getMapper(PayExceptionMapper.class);
     }
 }

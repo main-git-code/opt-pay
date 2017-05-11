@@ -108,5 +108,22 @@ public class PayCenterSVImpl implements IPayCenterSV {
         this.payCenterCombSV.updatePayCenterLog(req);
         LOG.info("修改交易记录成功");
     }
-    
+
+    @Override
+    public void createExceptionRecord(TradeModifyReq req) throws CallerException {
+        LOG.info("创建交易异常记录开始");
+        if (req == null) {
+            throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:修改交易记录请求参数不能为空");
+        }
+
+        if (StringUtil.isBlank(req.getTenantId())) {
+            throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:租户ID不能为空");
+        }
+
+        if (StringUtil.isBlank(req.getOrderId())) {
+            throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "获取参数失败:订单号不能为空");
+        }
+        this.payCenterCombSV.savePayCenterException(req);
+        LOG.info("创建交易异常记录成功");
+    }
 }

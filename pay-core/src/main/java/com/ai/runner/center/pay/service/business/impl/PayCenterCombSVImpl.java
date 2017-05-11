@@ -1,5 +1,7 @@
 package com.ai.runner.center.pay.service.business.impl;
 
+import com.ai.runner.center.pay.dao.mapper.bo.PayException;
+import com.ai.runner.center.pay.service.atom.interfaces.IPayCenterExceptionSV;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +37,9 @@ public class PayCenterCombSVImpl implements IPayCenterCombSV {
     
     @Autowired
     private IPayCenterLogStateSV payCenterLogStateSV;
+
+    @Autowired
+    private IPayCenterExceptionSV payCenterExceptionSV;
     
     @Override
     public long savePayCenterLog(TradeReq req) throws BusinessException {
@@ -104,4 +109,15 @@ public class PayCenterCombSVImpl implements IPayCenterCombSV {
         payCenterLogStateSV.savePayCenterLogState(info);
     }
 
+    @Override
+    public void savePayCenterException(TradeModifyReq req) throws BusinessException {
+        PayCenterLog payCenterLogAfterModify = this.payCenterLogSV
+                .getPayCenterLogByMerchantOrderId(req.getTenantId(), req.getOrderId());
+        if(payCenterLogAfterModify == null) {
+            throw new BusinessException(ExceptCodeConstants.PARAM_IS_NULL, "修改交易记录失败：不存在此条交易记录!");
+        }
+        PayException payException = new PayException();
+        BeanUtils.copyProperties(payException,payCenterLogAfterModify);
+        payCenterExceptionSV.savePayException(payException);
+    }
 }

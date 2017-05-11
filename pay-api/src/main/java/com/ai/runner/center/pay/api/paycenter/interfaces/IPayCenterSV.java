@@ -35,5 +35,16 @@ public interface IPayCenterSV {
      * @ApiCode PAY_0002
      */
     void modifyTradeRecord(TradeModifyReq req) throws CallerException;
+
+
+    /**
+     * 记录异常交易记录
+     * @param req 修改交易记录请求参数
+     * @throws CallerException 可能抛出的异常信息
+     * @author fanpw
+     * @ApiDocMethod
+     * @ApiCode PAY_0002
+     */
+    void createExceptionRecord(TradeModifyReq req) throws CallerException;
     
 }

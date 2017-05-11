@@ -32,5 +32,12 @@ public interface IPayCenterCombSV {
      * @ApiDocMethod
      */
     void updatePayCenterLog(TradeModifyReq req) throws BusinessException;
+
+    /**
+     * 保存支付异常记录
+     * @param req
+     * @throws BusinessException
+     */
+    void  savePayCenterException(TradeModifyReq req) throws BusinessException;
     
 }

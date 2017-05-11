@@ -63,15 +63,15 @@ public class PayCenterSVImplTest {
     @Test
     public void testModifyTradeRecord() {
         TradeModifyReq req = new TradeModifyReq();
-        req.setTenantId("BIS-ST");
-        req.setOrderId("T20150907105820");
+        req.setTenantId("yeecloud");
+        req.setOrderId("2000000046986631");
         req.setBuyerEmail("15010207836");
         req.setDrawEmail("hxzfb@huaxiangtelecom.cn");
         req.setStatus(2);
         req.setPayOrgSerial("2015090700001000590060050583");
         req.setNotifyId("123446");
         LOG.info(JSON.toJSONString(req));
-        this.payCenterSV.modifyTradeRecord(req);
+        this.payCenterSV.createExceptionRecord(req);
     }
    
 }

@@ -43,7 +43,7 @@ public interface IPayCenterSV {
      * @throws CallerException 可能抛出的异常信息
      * @author fanpw
      * @ApiDocMethod
-     * @ApiCode PAY_0002
+     * @ApiCode PAY_0003
      */
     void createExceptionRecord(TradeModifyReq req) throws CallerException;
     
